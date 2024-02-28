@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();    // server create
-const port = 7070;
+const port = 1111;
 const morgan = require('morgan');   
 
 // middleware

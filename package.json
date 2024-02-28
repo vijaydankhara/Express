@@ -4,8 +4,8 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodeman server.js"
+    "start": "node 2_app.js",
+    "dev": "nodeman app.js"
   },
   "name": "express",
   "version": "1.0.0",
