@@ -1,6 +1,6 @@
-{
-  "products": [
-    {
+[
+  {
+  
       "id": 1,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
@@ -103,7 +103,7 @@
         "https://cdn.dummyjson.com/product-images/6/3.png",
         "https://cdn.dummyjson.com/product-images/6/4.jpg"
       ]
-    },
+    },  
     {
       "id": 7,
       "title": "Samsung Galaxy Book",
@@ -550,8 +550,4 @@
         "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg"
       ]
     }
-  ],
-  "total": 100,
-  "skip": 0,
-  "limit": 30
-}
+  ]

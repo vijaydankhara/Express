@@ -9,7 +9,7 @@
   },
   "name": "express",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "2_app.js",
   "author": "",
   "license": "ISC",
   "description": "",
