@@ -8,9 +8,12 @@ const morgan = require('morgan');
 apps.use(express.json());   
 apps.use(morgan("dev"));   // log every request to the console
 
+
+/***************** || productRoutes || ********************/
 const productRoutes = require('./Routes/product.routes');
 apps.use('/products', productRoutes);
 
+/***************** ||  userRoutes  ||  ********************/
 const userRoutes = require('./Routes/user.routes');
 apps.use('/users', userRoutes);
 
