@@ -3,17 +3,17 @@ const userRoutes = express.Router();
 // Require controller modules.
 const { 
         addUser,
-        getAllUser,
         getUser,
         replaceUser,
         updateUser,
-        deleteUser
+        deleteUser,
+        getAllUsers
 } = require('../controller/user.controller');
 // Create user
 userRoutes.post('/',addUser);
 
 // // get all user
-// userRoutes.get('/',getAllUser);
+userRoutes.get('/',getAllUsers);
 
 // // get single user
 userRoutes.get('/single-user',getUser);

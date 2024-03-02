@@ -5,7 +5,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodeman server.js"
+    "dev": "nodemon apps.js"
   },
   "name": "express",
   "version": "1.0.0",

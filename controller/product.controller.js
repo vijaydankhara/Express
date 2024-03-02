@@ -3,7 +3,7 @@ const products = require('../public/product.json');
 exports.addProduct = (req, res) => {
   // console.log(req.body);
   const product = req.body;
-  product.push(product);
+  products.push(product);
   // products.push({...req.body});
   res.status(201).json({ message: "Products is added......." });
 };
