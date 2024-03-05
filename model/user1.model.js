@@ -16,14 +16,11 @@ const user1Schema = mongoose.Schema({
     age: {
         type : Number
     },
-    email: {
-        type: String  
-    },
-    mobileNumber: {
-        type: Number  
-    },
+    
     password: { 
         type:String
         }
         
 });
+
+module.exports = mongoose.model('users', user1Schema);
