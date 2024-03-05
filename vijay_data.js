@@ -14,5 +14,6 @@ postman  dawonlod for  run   (put post patch delete head options)
 
 npm i multer       //   for  upload file   now not need
 
+npm i mongoose      //  for database connect 
 
 */
