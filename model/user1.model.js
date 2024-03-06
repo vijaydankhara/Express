@@ -19,6 +19,10 @@ const user1Schema = mongoose.Schema({
     
     password: { 
         type:String
+        },
+        isDelete: {
+            type: Boolean,
+            default: false
         }
         
 });

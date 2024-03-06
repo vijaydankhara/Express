@@ -1,4 +1,5 @@
 const User = require('../model/user1.model');
+const bcrypt = require('bcrypt')
 exports.addUser = async (req,res)=>{
 try{
     const {firstName,lastName,surename,gender,age,password} = req.body;
@@ -31,7 +32,7 @@ exports.getAllUsers = async(req,res)=>{
 
 exports.getUser = async(req,res) =>{
     try{
-        let userId = req.query.userid;
+        let userId = req.query.userId;
         let user = await User.findById(userId);
         // let user = await User.findone({ firstName: userId});
         if (!user) {

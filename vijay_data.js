@@ -16,4 +16,5 @@ npm i multer       //   for  upload file   now not need
 
 npm i mongoose      //  for database connect 
 
+npm i bcrypt          // password encrypt
 */
