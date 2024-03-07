@@ -45,7 +45,7 @@ exports.getProduct = async (req, res) => {
 exports.updateProduct = async (req, res) => {
     try {
         let productId = req.query.productId;
-        let product = await Product.findById({productId});
+        let product = await Product.findById(productId);
         if(!product){
             return res.status(404).json({message: 'Product Not Found'});
         }
