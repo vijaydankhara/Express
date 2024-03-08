@@ -1,16 +1,19 @@
 const User = require('../model/user1.model');
-const bcrypt = require('bcrypt')
-exports.addUser = async (req,res)=>{
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+exports.registerUser = async (req,res)=>{
 try{
-    const {firstName,lastName,surename,gender,age,password} = req.body;
-    console.log(req.body);
-    let newUser = await User.create({
-        firstName,
-        lastName,
-        surename,
-        gender,
-        age,
-        password
+    const {firstName,lastName,email,gender,age,password} = req.body;
+    let user = await User.findOne({email: email,isdelete: false});
+     if(user){
+         return res.status(400).json({ message: "User Is Already Registred..."})
+     }
+     // hash Password
+     let hashPassword =  await bcrypt.hash(password,10);
+    user = await User.create({
+        firstName,  lastName,   email,
+        gender,     age,        password
     });
     newUser.save();
     res.status(201).json({user1: newUser, message: 'New User Is Added'});
@@ -19,6 +22,26 @@ try{
         res.status(500).json({message: 'Internal Server Error !!!'});
 }
 }
+
+
+exports.loginUser = async (req,res) => {
+    try{
+        let user = await User.findOne({email: req.body.email, isdelete :false});
+        if(!user){
+            return res.status(404).json({message:'User Is Not Found!'});
+        }
+        let chaekPassword = await  bcrypt.compare(req.body.password, user.password);
+        if (!chaekPassword) {
+            return res.status(400).json({ message: 'Password Is Not Match!'})
+        }
+       let token = jwt.sign({ userId: user._id},'Skill Qode');
+       res.status(200).json({token, message: 'Login Successfully'})
+    } catch(error){
+        console.log(error);
+        res.status(500).json({message:"Internal Server Error!"});
+    }
+};
+
 
 exports.getAllUsers = async(req,res)=>{
     try{

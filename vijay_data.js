@@ -17,4 +17,6 @@ npm i multer       //   for  upload file   now not need
 npm i mongoose      //  for database connect 
 
 npm i bcrypt          // password encrypt
+
+npm i jsonwebtoken   // Generate JSON Web Tokens
 */
