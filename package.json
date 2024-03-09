@@ -7,8 +7,8 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "node productTask.js",
-    "dev": "nodemon productTask.js"
+    "start": "node user1.js",
+    "dev": "nodemon user1.js"
   },
   "name": "express",
   "version": "1.0.0",

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3333;
+const port = 2233;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
@@ -20,5 +20,5 @@ const productRoutes = require('./Routes/productTask.routes');
 app.use('/api/products', productRoutes);
 
 app.listen(port, () => {
-    console.log('Server running at http://localhost:3333');
+    console.log('Server running at http://localhost:2233');
 });
