@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const user1 = express();
-const port = 5295;
+const port = process.env.PORT;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 async function main (){
-    await mongoose.connect('mongodb://127.0.0.1:27017/user1info');
+    await mongoose.connect(process.env.MONGO_DB_URL);
 }
 
 main()
@@ -18,7 +19,7 @@ const userRoutes = require('./Routes/user1.routes');
 user1.use('/api/user',userRoutes)
 
 user1.listen(port,()=>{
-    console.log('server start at http://localhost:5295');
+    console.log('server start at http://localhost:${port}');
 });
 
 

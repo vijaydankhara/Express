@@ -1,13 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 2233;
+const port = process.env.PORT;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
 // Database connection
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/ProductNewTask');
+    await mongoose.connect(process.env.MONGO_DB_URL);
 }
 main()
   .then(()=>console.log('DB is Connected....'))
@@ -20,5 +21,5 @@ const productRoutes = require('./Routes/productTask.routes');
 app.use('/api/products', productRoutes);
 
 app.listen(port, () => {
-    console.log('Server running at http://localhost:2233');
+    console.log('Server running at http://localhost:5295');
 });

@@ -19,4 +19,6 @@ npm i mongoose      //  for database connect
 npm i bcrypt          // password encrypt
 
 npm i jsonwebtoken   // Generate JSON Web Tokens
+
+npm i dotenv   // hidden server data  not seen public
 */

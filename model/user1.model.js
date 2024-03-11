@@ -20,6 +20,9 @@ const user1Schema = mongoose.Schema({
     password: { 
         type:String
         },
+        email: { 
+            type:String
+            },
         isDelete: {
             type: Boolean,
             default: false

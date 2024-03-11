@@ -1,4 +1,6 @@
 const Product = require('../model/productTask.model');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.addProduct = async (req, res) => {
     try {
@@ -30,7 +32,7 @@ exports.getAllProducts = async (req, res) => {
 
 exports.getProduct = async (req, res) => {
     try {
-        let productId = req.query.productId;
+        let productId = req.Product._Id;
         let Product = await Product.findOne({_id: productId, isDelete: true});
         if(!Product){
             return res.status(404).json({message: 'Product Not Found'});
@@ -44,7 +46,7 @@ exports.getProduct = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
-        let productId = req.query.productId;
+        let productId = req.Product._Id;
         let product = await Product.findById(productId);
         if(!product){
             return res.status(404).json({message: 'Product Not Found'});
@@ -59,7 +61,7 @@ exports.updateProduct = async (req, res) => {
 
 exports.deleteProduct = async (req, res) => {
     try {
-        let productId = req.query.productId;
+        let productId = req.Product._Id;
         let product = await Product.findById(productId);
         if(!product){
             return res.status(404).json({message: 'Product Not Found'});
