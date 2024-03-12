@@ -1,22 +1,25 @@
 const Product = require('../model/productTask.model');
-require('../helpers/verifyToken')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.addProducts = async(req, res) => {
     try {
         const{title, description, price, category} = req.body;
+        console.log(req.file);
         let newProduct = await Product.create({
             title,
             description,
             price,
             category
         });
+        console.log(newProduct);
         newProduct.save();
         res.status(201).json({product: newProduct, meassage : `Product Added SuccesFully`});
     } catch (error) {
         console.log(error);
         res.status(500).json({message : `Internal Server Error`});
     }
-};
+}; 
 
 exports.getAllProducts = async(req, res) => {
     try {

@@ -11,7 +11,7 @@ const {
         updateUser, 
         deleteUser,
         changePassword
-} = require('../controller/user1.controller');
+} = require('../controller/users2.controller');
 
 // userRoutes.post('/add-user', addUsers);
 
@@ -21,12 +21,11 @@ userRoutes.post('/login-user', loginUser);
 
 userRoutes.get('/getAll-users',verifyToken, getAllUsers);
 
-userRoutes.get('/get-users',verifyToken, getUser);
+userRoutes.get('/get-user',verifyToken, getUser);
 
 userRoutes.put('/update-user',verifyToken, updateUser);
 
 userRoutes.delete('/delete-user',verifyToken, deleteUser);
 
-// userRoutes.put('/change-password', changePassword);
 
 module.exports = userRoutes;

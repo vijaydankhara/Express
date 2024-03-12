@@ -1,29 +1,31 @@
 require('dotenv').config();
 const express = require('express');
-const user1 = express();
+const app = express();
 const port = process.env.PORT;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-async function main (){
+// Database Connection
+async function main(){
+    // await mongoose.connect('mongodb://127.0.0.1:27017/dhaval');
     await mongoose.connect(process.env.MONGO_DB_URL);
 }
-
 main()
-.then(()=>console.log('DB Is Connected.....'))
-.catch(err => console.log(err));
+.then(()=>console.log('DB is Connected SuccessFully.......'))
+.catch( err =>{console.log(err)});
 
-user1.use(express.json());
-user1.use(morgan('dev'));
+// Middlware
+app.use(express.json());
+app.use(morgan('dev'));
 
-const userRoutes = require('./Routes/user1.routes');
-user1.use('/api/user',userRoutes)
 
+// User Server (mongoosh)
+const userRoutes = require('./Routes/users2.routes');
+app.use('/api/user',userRoutes);
 const productRoutes = require('./Routes/productTask.routes');
-user1.use('/api/products', productRoutes);
+app.use('/api/product',productRoutes);
+// const cartRoutes = require('./routers/cart.routes');
+// app.use('/api/cart',cartRoutes);
 
-
-user1.listen(port,()=>{
-    console.log('server start at http://localhost:${port}');
-});
-
-
+app.listen(port,()=>{
+    console.log(`Server Start at http://localhost:${port}`);
+}); 

@@ -1,28 +1,28 @@
-const User = require('../model/user1.model');
-const bcrypt = require('bcryptjs');
+const User = require('../model/users2.model');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// exports.addUsers = async (req, res) => {
-//     try{
-//         const {firstName, lastName, gender, email, password, age} = req.body;
-//         // console.log(req.body);
-//         let hashPassword = await bcrypt.hash(password,10);
-//         console.log(hashPassword);
-//         let newUser = await User.create({
-//             firstName,
-//             lastName,
-//             gender,
-//             email,
-//             password: hashPassword,
-//             age
-//         });
-//         newUser.save();
-//         res.status(201).json({user : newUser, message : 'New User Is Added...'});
-//     }catch(err){
-//         console.log(error);
-//         res.status(500).json({message : 'Internal Server Error...'});
-//     }
-// };
+exports.addUsers = async (req, res) => {
+    try{
+        const {firstName, lastName, gender, email, password, age} = req.body;
+        // console.log(req.body);
+        let hashPassword = await bcrypt.hash(password,10);
+        console.log(hashPassword);
+        let newUser = await User.create({
+            firstName,
+            lastName,
+            gender,
+            email,
+            password: hashPassword,
+            age
+        });
+        newUser.save();
+        res.status(201).json({user : newUser, message : 'New User Is Added...'});
+    }catch(err){
+        console.log(error);
+        res.status(500).json({message : 'Internal Server Error...'});
+    }
+};
 
 exports.registerUser = async (req, res) => {
     try {
