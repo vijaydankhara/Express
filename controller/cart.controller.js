@@ -32,3 +32,16 @@ exports.getAllCart = async (req, res) => {
         res.status(500).json({ message : `Internal Server Error....`});
     }
 }
+
+exports.getCart = async (req,res) => {
+    try {
+        let cart = await Cart.findOne({_id: req.query.cartId,isDelete: false});
+        if(!cart){
+            return res.status(404).json({message: 'Cart Not Found'});
+        }
+        res.status(200).json(cart);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error..!'});
+    }
+};

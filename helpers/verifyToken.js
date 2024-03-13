@@ -11,7 +11,7 @@ exports.verifyToken = async (req, res, next) => {
     if(token === undefined){
         return res.status(401).json({ message : `Unauthoeize : ${console.error()}`});
     }else{
-        let {userId} = jwt.verify(token, 'vijaydankhara');
+        let {userId} = jwt.verify(token, 'DS07');
         console.log(userId);
         let user = await User.findById(userId);
         console.log(user);
