@@ -11,7 +11,7 @@ const {
         updateUser, 
         deleteUser,
         changePassword
-} = require('../controller/users2.controller');
+} = require('../controller/users.controller');
 
 // userRoutes.post('/add-user', addUsers);
 

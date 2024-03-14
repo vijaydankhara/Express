@@ -1,5 +1,5 @@
 const Cart = require('../model/cart.model');
-const { loginUser } = require('./users2.controller');
+const { loginUser } = require('./users.controller');
 
 exports.addToCart = async (req, res) =>{
     try {

@@ -1,29 +1,31 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();    // server create
-const port = 7070;
-const morgan = require('morgan');   
-
-// middleware
-let myFun = (req, res, next) => {
-// console.log(req.query);
-
-if((req.query.age) >= 18){
-next();
-}else{
-res.send('Sorry! You have under below 18');
+const app = express();
+const port = process.env.PORT;
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+// Database Connection
+async function main(){
+    // await mongoose.connect('mongodb://127.0.0.1:27017/dhaval');
+    await mongoose.connect(process.env.MONGO_DB_URL);
 }
-}
+main()
+.then(()=>console.log('DB is Connected SuccessFully.......'))
+.catch( err =>{console.log(err)});
 
-// app.use(myFun);       // Application Level middleware
-app.use(express.json());    // built-in
+// Middlware
+app.use(express.json());
 app.use(morgan('dev'));
-app.get('/', myFun, (req, res)=> {
-res.send('Welcome to Express JS');
-});
-app.post('/', (req, res) => {
-res.send('Post method');
-});
 
-app.listen(port, () => {
-console.log(`Server start at http://localhost:7070`);
-})
+
+// User Server (mongoosh)
+const userRoutes = require('./Routes/users.routes');
+app.use('/api/user',userRoutes);
+const productRoutes = require('./Routes/productTask.routes');
+app.use('/api/product',productRoutes);
+const cartRoutes = require('./Routes/cart.routes');
+app.use('/api/cart',cartRoutes);
+
+app.listen(port,()=>{
+    console.log(`Server Start at http://localhost:${port}`);
+}); 
