@@ -45,3 +45,31 @@ exports.getAllOrders = async (req, res) => {
     res.status(500).json({ Message: "Internal Server error" });
   }
 };
+
+
+exports.getOrder = async (req, res) => {
+  try {
+      let order = await Order.findOne({_id: req.query.orderId, isDelete: false}).populate('user').populate('items');
+      if (!order) {
+          return res.status(404).json({ message: `Order Not Found...`})
+      }
+      res.status(200).json(order);
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: `Internal Server Error`});
+  }
+};
+
+exports.deleteOrder = async (req, res) => {
+  try {
+      let order = await Order.findOne({_id: req.query.orderId }).populate('user').populate('items');
+      if(!order){
+          return res.status(404).json({ message: `Order Not Found..`});
+      }
+      order = await Order.findOneAndUpdate(order._id, { isDelete: true}, { new : true});
+      res.status(200).json({order, message: `Your Order Deleted Successfully...`});
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: `Internal Server Error`});
+  }
+}
