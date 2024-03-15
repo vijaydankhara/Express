@@ -4,7 +4,7 @@ const Cart = require('../model/cart.model');
 exports.newOrder = async (req, res) => {
     try {
         let cartItems = await Cart.find({ user: req.user._id, isDelete: false }).populate('cartItem');
-// res.send(cartItems);
+res.send(cartItems);
 let orderItems = cartItems.map(item => ({
     product: item.cartItem._id, 
     quantity:  item.quantity,
