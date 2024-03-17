@@ -13,10 +13,10 @@ const user1Schema = mongoose.Schema({
         type: String, 
         enum: ['Male', 'Female']
     },
-    age: {
-        type : Number
+    profileImage: {
+        type: String, 
+     
     },
-    
     password: { 
         type:String
         },

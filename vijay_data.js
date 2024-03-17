@@ -21,13 +21,15 @@ npm i bcrypt          // password encrypt
 npm i jsonwebtoken   // Generate JSON Web Tokens
 
 npm i dotenv   // hidden server data  not seen public
+
+npm i multer  // photo and file uplode
 */
 
 /*
 
-git checkout -b VD_8
+git checkout -b VD_9
 git add .
-git commit -m "15-03-2024"
+git commit -m "17-03-2024"
 git push
 
 */

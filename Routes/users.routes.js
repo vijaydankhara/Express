@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoutes = express.Router();
+const { upload } =require('../helpers/imageUpload');
 const { verifyToken } = require('../helpers/verifyToken');
 
 const { 
@@ -10,7 +11,7 @@ const {
         getUser, 
         updateUser, 
         deleteUser,
-        changePassword
+        addNewUser
 } = require('../controller/users.controller');
 
 // userRoutes.post('/add-user', addUsers);
@@ -27,5 +28,6 @@ userRoutes.put('/update-user',verifyToken, updateUser);
 
 userRoutes.delete('/delete-user',verifyToken, deleteUser);
 
+userRoutes.post('/add-user', upload.single('profileImage'), addNewUser);
 
 module.exports = userRoutes;

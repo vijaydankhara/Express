@@ -4,9 +4,11 @@ const app = express();
 const port = process.env.PORT;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
+
 // Database Connection
 async function main(){
-    // await mongoose.connect('mongodb://127.0.0.1:27017/dhaval');
+    // await mongoose.connect('mongodb://127.0.0.1:27017/vijay');
     await mongoose.connect(process.env.MONGO_DB_URL);
 }
 main()
@@ -14,8 +16,10 @@ main()
 .catch( err =>{console.log(err)});
 
 // Middlware
+let imagePath = path.join(__dirname,'public','images');
 app.use(express.json());
 app.use(morgan('dev'));
+app.use('/public/images', express.static(imagePath));
 
 
 // User Server (mongoosh)
